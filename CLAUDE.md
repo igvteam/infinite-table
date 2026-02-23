@@ -51,8 +51,8 @@ createModalTable(config)
 | `columnRenderer.js` | Header + data cell rendering, CSS grid layout, `columnDefs` title overrides |
 | `virtualScroller.js` | Scroll engine — sentinel div for total height, `translateY` positioning, row recycling pool, `requestAnimationFrame` throttling, 20-row buffer |
 | `searchFilter.js` | Debounced input filter — pre-computes concatenated lowercase string per row on `setData`, substring match on input |
-| `rowSelection.js` | Selected index tracking — single mode (one row) or multi mode (click/Shift+click range/Ctrl+Cmd toggle) |
-| `infiniteTable.js` | Main component — composes all four pieces, wires callbacks, manages `displayData` index mapping (original indices after filtering) |
+| `rowSelection.js` | Selected index tracking — single mode (at most one) or multi mode, click toggles in both modes. Tracks original data indices so selections survive filtering |
+| `infiniteTable.js` | Main component — composes all four pieces, wires callbacks, manages `displayData` index mapping (original indices after filtering). Supports `:selected` magic keyword in search box to filter view to selected rows only |
 | `modalTable.js` | Bootstrap 5 modal wrapper — lazy build on `shown.bs.modal`, spinner, OK/Cancel footer |
 | `index.js` | Public exports: `createInfiniteTable`, `createModalTable` |
 
