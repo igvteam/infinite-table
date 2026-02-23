@@ -1,0 +1,36 @@
+// __body, __viewport, __row, __cell
+
+.infinite-table__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: auto;
+  position: relative;
+  height: $body-height;
+}
+
+.infinite-table__row {
+  min-height: $row-height;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+
+  &:hover {
+    background-color: $color-row-hover;
+  }
+
+  &--even {
+    background-color: $color-row-even;
+
+    &:hover {
+      background-color: $color-row-hover;
+    }
+  }
+}
+
+.infinite-table__cell {
+  padding: $spacing-xs $spacing-sm;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+}

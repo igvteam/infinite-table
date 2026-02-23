@@ -1,0 +1,92 @@
+.infinite-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  color: #212529;
+  background: #fff;
+}
+
+.infinite-table__header {
+  flex-shrink: 0;
+}
+
+.infinite-table__search {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-bottom: 1px solid #dee2e6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+}
+.infinite-table__search:focus {
+  box-shadow: inset 0 -2px 0 0 rgba(0, 123, 255, 0.15);
+}
+.infinite-table__search::placeholder {
+  color: #6c757d;
+}
+
+.infinite-table__header-row {
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  min-height: 32px;
+  align-items: center;
+}
+.infinite-table__header-row .infinite-table__cell {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6c757d;
+}
+
+.infinite-table__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: auto;
+  position: relative;
+  height: 400px;
+}
+
+.infinite-table__row {
+  min-height: 28px;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+.infinite-table__row:hover {
+  background-color: #e9ecef;
+}
+.infinite-table__row--even {
+  background-color: #f8f9fa;
+}
+.infinite-table__row--even:hover {
+  background-color: #e9ecef;
+}
+
+.infinite-table__cell {
+  padding: 4px 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.infinite-table__row--selected {
+  background-color: #cce5ff;
+}
+.infinite-table__row--selected:hover {
+  background-color: #b8daff;
+}
+.infinite-table__row--selected.infinite-table__row--even {
+  background-color: #cce5ff;
+}
+.infinite-table__row--selected.infinite-table__row--even:hover {
+  background-color: #b8daff;
+}

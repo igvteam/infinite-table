@@ -1,0 +1,12 @@
+{
+  "name": "infinite-table",
+  "version": "0.1.0",
+  "description": "Virtual-scrolling table with real-time search",
+  "files": [
+    "src/**",
+    "scss/**",
+    "css/**"
+  ],
+  "module": "src/index.js",
+  "license": "MIT"
+}

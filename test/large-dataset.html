@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfiniteTable — Large Dataset Test</title>
+    <link rel="stylesheet" href="../css/infinite-table.css">
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1rem; }
+        p { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        #stats { font-size: 0.85rem; color: #333; margin-bottom: 1rem; font-family: monospace; }
+        #table-container { height: 600px; }
+    </style>
+</head>
+<body>
+    <h1>Large Dataset Test — 500K rows</h1>
+    <p>Verify: smooth scrolling at 60fps, flat memory (~100-200 DOM nodes in viewport), fast data load.</p>
+    <div id="stats"></div>
+    <div id="table-container"></div>
+
+    <script type="module">
+        import { createInfiniteTable } from '../src/index.js'
+        import { generateRows } from './helpers/generateData.js'
+
+        const stats = document.getElementById('stats')
+
+        const t0 = performance.now()
+        const { columns, data } = generateRows(500000)
+        const t1 = performance.now()
+        stats.textContent = `Generated 500K rows in ${(t1 - t0).toFixed(0)}ms`
+
+        const table = createInfiniteTable({
+            container: document.getElementById('table-container'),
+            columns: columns
+        })
+
+        const t2 = performance.now()
+        table.setData(data)
+        const t3 = performance.now()
+        stats.textContent += ` | setData in ${(t3 - t2).toFixed(0)}ms`
+
+        // Monitor DOM node count
+        setInterval(() => {
+            const rows = document.querySelectorAll('.infinite-table__row')
+            stats.textContent = stats.textContent.replace(/ \| DOM nodes: \d+/, '')
+            stats.textContent += ` | DOM nodes: ${rows.length}`
+        }, 1000)
+    </script>
+</body>
+</html>

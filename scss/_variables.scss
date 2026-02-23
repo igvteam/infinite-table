@@ -1,0 +1,29 @@
+// Design tokens — Dieter Rams functional minimalism
+
+// Typography
+$font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-size-base: 13px;
+$font-size-header: 11px;
+
+// Colors — restrained gray palette
+$color-border: #dee2e6;
+$color-header-bg: #f8f9fa;
+$color-header-text: #6c757d;
+$color-row-even: #f8f9fa;
+$color-row-hover: #e9ecef;
+$color-selected: #cce5ff;
+$color-selected-hover: #b8daff;
+$color-search-border: #ced4da;
+$color-search-focus: rgba(0, 123, 255, 0.15);
+$color-text: #212529;
+
+// Spacing — systematic 4px/8px
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+
+// Layout
+$row-height: 28px;
+$header-height: 32px;
+$search-height: 36px;
+$body-height: 400px;

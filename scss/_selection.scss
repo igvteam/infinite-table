@@ -1,0 +1,17 @@
+// --selected modifier
+
+.infinite-table__row--selected {
+  background-color: $color-selected;
+
+  &:hover {
+    background-color: $color-selected-hover;
+  }
+
+  &.infinite-table__row--even {
+    background-color: $color-selected;
+
+    &:hover {
+      background-color: $color-selected-hover;
+    }
+  }
+}

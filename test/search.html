@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfiniteTable — Search Test</title>
+    <link rel="stylesheet" href="../css/infinite-table.css">
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 2rem; max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1rem; }
+        p { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        #info { font-size: 0.85rem; color: #333; margin-top: 0.5rem; }
+        #table-container { height: 500px; }
+    </style>
+</head>
+<body>
+    <h1>Search Test — 10K rows with real-time filtering</h1>
+    <p>Verify: type to filter, results update in real-time, scroll resets to top, clearing restores all rows.</p>
+    <div id="table-container"></div>
+    <div id="info"></div>
+
+    <script type="module">
+        import { createInfiniteTable } from '../src/index.js'
+        import { generateRows } from './helpers/generateData.js'
+
+        const { columns, data } = generateRows(10000)
+        const info = document.getElementById('info')
+
+        const table = createInfiniteTable({
+            container: document.getElementById('table-container'),
+            columns: columns
+        })
+
+        table.setData(data)
+        info.textContent = `Showing ${data.length} rows`
+
+        // Monitor filtered count via MutationObserver on search input
+        const searchInput = document.querySelector('.infinite-table__search')
+        searchInput.addEventListener('input', () => {
+            setTimeout(() => {
+                const filtered = table.getFilteredData()
+                info.textContent = `Showing ${filtered.length} of ${data.length} rows`
+            }, 300)
+        })
+    </script>
+</body>
+</html>

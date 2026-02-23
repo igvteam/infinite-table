@@ -1,0 +1,13 @@
+// .infinite-table block layout
+
+.infinite-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: $font-stack;
+  font-size: $font-size-base;
+  color: $color-text;
+  background: #fff;
+}

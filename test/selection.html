@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfiniteTable — Selection Test</title>
+    <link rel="stylesheet" href="../css/infinite-table.css">
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 2rem; max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1rem; }
+        p { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        h2 { font-size: 1.1rem; font-weight: 500; margin-top: 2rem; margin-bottom: 0.5rem; }
+        #multi-info, #single-info { font-size: 0.85rem; color: #333; margin-top: 0.5rem; margin-bottom: 1rem; }
+        .table-container { height: 300px; }
+    </style>
+</head>
+<body>
+    <h1>Selection Test — 200 rows</h1>
+    <p>Verify: Click=select one, Shift+click=range, Ctrl/Cmd+click=toggle (multi). Single mode=one row only.</p>
+
+    <h2>Multi-select mode</h2>
+    <div class="table-container" id="multi-container"></div>
+    <div id="multi-info">No selection</div>
+
+    <h2>Single-select mode</h2>
+    <div class="table-container" id="single-container"></div>
+    <div id="single-info">No selection</div>
+
+    <script type="module">
+        import { createInfiniteTable } from '../src/index.js'
+        import { generateRows } from './helpers/generateData.js'
+
+        const { columns, data } = generateRows(200, 4)
+
+        // Multi-select table
+        const multiTable = createInfiniteTable({
+            container: document.getElementById('multi-container'),
+            columns: columns,
+            selectionStyle: 'multi'
+        })
+        multiTable.setData(data)
+
+        // Single-select table
+        const singleTable = createInfiniteTable({
+            container: document.getElementById('single-container'),
+            columns: columns,
+            selectionStyle: 'single'
+        })
+        singleTable.setData(data)
+
+        // Monitor selections
+        setInterval(() => {
+            const multiSel = multiTable.getSelectedData()
+            document.getElementById('multi-info').textContent =
+                multiSel.length > 0 ? `Selected ${multiSel.length} rows` : 'No selection'
+
+            const singleSel = singleTable.getSelectedData()
+            document.getElementById('single-info').textContent =
+                singleSel.length > 0 ? `Selected: ${singleSel[0][columns[0]]}` : 'No selection'
+        }, 200)
+    </script>
+</body>
+</html>
