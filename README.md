@@ -21,7 +21,7 @@ As a Git dependency in `package.json`:
 ```json
 {
   "dependencies": {
-    "infinite-table": "github:turner/InfiniteTable"
+    "infinite-table": "github:igvteam/infinite-table"
   }
 }
 ```

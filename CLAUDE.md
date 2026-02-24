@@ -6,7 +6,7 @@ InfiniteTable is a zero-dependency, virtual-scrolling table component with real-
 
 **Key drivers:** GenArk datasets are ~1M rows (DataTables paginates them poorly), jQuery elimination, simpler API.
 
-**Repo:** `github.com/turner/InfiniteTable`
+**Repo:** `github.com/igvteam/infinite-table`
 **Consumer:** `github.com/igvteam/igv-webapp` (local at `~/IGVDevelopment/igv-webapp`)
 
 ## Build & Test
