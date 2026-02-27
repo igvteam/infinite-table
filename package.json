@@ -8,5 +8,12 @@
     "css/**"
   ],
   "module": "src/index.js",
-  "license": "MIT"
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
 }
