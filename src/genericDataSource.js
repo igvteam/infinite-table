@@ -88,9 +88,9 @@ class GenericDataSource {
 
                     switch (delimiter) {
                         case '\t'   :
-                            return this.parseTabData(result)
+                            return this.parseTabData(result, this.filter)
                         case ','    :
-                            return parseCSV(result)
+                            return parseCSV(result, this.filter)
                     }
                 }
 
@@ -169,15 +169,17 @@ function getDelimiterForExtension(extension) {
     }
 }
 
-function parseCSV(str) {
+function parseCSV(str, filter) {
 
     const list = str.split('\n')
     const keys = list.shift().split(',').map(key => key.trim())
 
-    return list.map(line => {
+    const records = list.map(line => {
         const keyValues = line.split(',').map((value, index) => [keys[index], value.trim()])
         return Object.fromEntries(new Map(keyValues))
     })
+
+    return (undefined === filter) ? records : records.filter(filter)
 
 }
 
