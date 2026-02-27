@@ -155,6 +155,13 @@ function createInfiniteTable({ container, columns, columnDefs, selectionStyle = 
         scroller.refresh()
     }
 
+    function clearSearch() {
+        searchFilter.clear()
+        displayData = data.map((_, i) => i)
+        scroller.setRowCount(displayData.length)
+        scroller.scrollToTop()
+    }
+
     function scrollToTop() {
         scroller.scrollToTop()
     }
@@ -192,6 +199,7 @@ function createInfiniteTable({ container, columns, columnDefs, selectionStyle = 
         getSelectedData,
         getSelectedDisplayIndices,
         clearSelection,
+        clearSearch,
         scrollToTop,
         setRowHandler,
         getRowHandler,

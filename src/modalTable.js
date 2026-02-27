@@ -43,6 +43,14 @@ function createModalTable({ id, title, datasource, okHandler, selectionStyle, pa
         }
     })
 
+    // Clear search keyword and selections on modal dismiss
+    modalElement.addEventListener('hidden.bs.modal', () => {
+        if (infiniteTable) {
+            infiniteTable.clearSearch()
+            infiniteTable.clearSelection()
+        }
+    })
+
     // --- Public methods ---
 
     function setTitle(newTitle) {
