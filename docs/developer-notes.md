@@ -1,4 +1,4 @@
-# CLAUDE.md
+# Developer Notes
 
 ## Project Overview
 
